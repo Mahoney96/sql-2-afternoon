@@ -88,3 +88,97 @@ SET composer = 'The darkness around us'
 WHERE genre_id = (SELECT genre_id FROM genre WHERE name = 'Metal')
 
 AND composer IS null;
+
+
+-- GROUP BY SECTION --
+
+-- 1
+
+SELECT COUNT(*), g.name
+FROM track t
+JOIN genre g ON t.genre_id = g.genre_id
+GROUP BY g.name;
+
+--2
+
+SELECT COUNT(*), g.name
+FROM track t 
+JOIN genre g ON t.genre_id = genre_id
+WHERE g.name = 'Pop' or g.name = 'Rock'
+GROUP BY g.name;
+
+--3
+
+SELECT DISTINCT company
+FROM customer;
+
+
+
+
+--  Delete Rows
+
+-- Practice Table to Use for Delete problems: 
+
+-- practice_delete TABLE
+CREATE TABLE practice_delete ( name TEXT, type TEXT, value INTEGER );
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'bronze', 50);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'bronze', 50);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'bronze', 50);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'silver', 100);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'silver', 100);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'gold', 150);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'gold', 150);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'gold', 150);
+INSERT INTO practice_delete ( name, type, value ) VALUES ('delete', 'gold', 150);
+
+SELECT * FROM practice_delete;
+
+-- 1
+DELETE 
+FROM practice_delete
+WHERE type = 'bronze';
+
+-- 2
+DELETE 
+FROM practice_delete
+WHERE type = 'silver';
+
+-- 3
+DELETE
+FROM practice_delete
+WHERE type = 150;
+
+
+--  e-commerce Problem
+
+-- Need tables for: 
+-- USERS, PRODUCTS, ORDERS.
+--     -USERS:
+--         - Name
+--         - email
+--     PRODUCTS:
+--     - name
+--     - price
+
+--     ORDERS:
+--     -ref to products
+
+--      
+
+CREATE TABLE users ( name TEXT, email TEXT, user_id INTEGER);
+
+INSERT INTO users ( name, email, user_id) VALUES ('Bob', 'Bob@aol.com', 1);
+INSERT INTO users ( name, email, user_id) VALUES ('Joe', 'Joe@aol.com', 2);
+INSERT INTO users ( name, email, user_id) VALUES ('Jim', 'Jim@aol.com', 3);
+
+-- 1 
+ SELECT * users
+
+
+CREATE TABLE products ( product_name TEXT, sku INTEGER);
+
+INSERT INTO products ( product_name, sku) VALUES ('mouse', 6785);
+INSERT INTO products ( product_name, sku) VALUES ('wireless keyboard', 6854);
+INSERT INTO products ( product_name, sku) VALUES ('laptop', 4594);
+
+CREATE TABLE  orders ( ) VALUES ( );
